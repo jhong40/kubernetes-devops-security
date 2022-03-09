@@ -73,7 +73,7 @@ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key 
 sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt install ca-certificates   # jack add
 sudo apt update
-sudo apt install -y jenkins
+sudo apt install -y jenkins=2.289.1
 systemctl daemon-reload
 systemctl enable jenkins
 sudo systemctl start jenkins
