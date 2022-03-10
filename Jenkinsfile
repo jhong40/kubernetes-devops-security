@@ -22,7 +22,7 @@ pipeline {
     
     stage('SonarQube') {
       steps {
-          mvn sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://myjenkins.protech.com:9000 -Dsonar.login=ac0ae91b32b0ef03a3747f879f41789bf6006720
+          mvn sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://160.1.38.192:9000 -Dsonar.login=ac0ae91b32b0ef03a3747f879f41789bf6006720
       }
     }     
     
