@@ -20,12 +20,7 @@ pipeline {
     }       
     
     
-    stage('SonarQube') {
-      steps {
-        sh 'mvn sonar:sonar -Dsonar.projectKey=numeric-application -Dsonar.host.url=http://160.1.38.192:9000 -Dsonar.login=6880161baf8b301da7e1f232225dc981c407fb8b'
-      }
-    }     
-    
+
     
    stage('Kubernetes Deployment - DEV') {
       steps {
