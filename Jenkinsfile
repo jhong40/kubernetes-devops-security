@@ -19,7 +19,14 @@ pipeline {
       }
     }       
     
-    
+        stage('Vulnerability Scan - Docker') {
+      steps {
+          "Trivy Scan": {
+            sh "bash trivy-docker-image-scan.sh"
+          }
+      }
+    }
+
 
     
    stage('Kubernetes Deployment - DEV') {
