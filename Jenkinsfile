@@ -19,11 +19,19 @@ pipeline {
       }
     }       
     
-  stage('Vulnerability Scan - Docker') {
+    stage('Vulnerability Scan - Docker') {
       steps {
-             sh "bash trivy-docker-image-scan.sh"
+        parallel(
+          "Dependency Scan": {
+            sh "echo AnotherScan"
+          },
+          "Trivy Scan": {
+            sh "bash trivy-docker-image-scan.sh"
+          }
+        )
       }
     }
+
 
 
     
