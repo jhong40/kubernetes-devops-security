@@ -9,15 +9,19 @@ pipeline {
             }
         }
     
-    stage('Docker Build and Push') {
+
+    stage('Vulnerability Scan - Kubernetes') {
       steps {
-        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-          sh 'printenv'
-          sh 'sudo docker build -t jhong40/numeric-app:""$GIT_COMMIT"" .'
-          sh 'docker push jhong40/numeric-app:""$GIT_COMMIT""'
-        }
+        parallel(
+          "OPA Scan": {
+            sh 'docker run --rm -v $(pwd):/project openpolicyagent/conftest test --policy opa-k8s-security.rego k8s_deployment_service.yaml'
+          },
+          "Kubesec Scan": {
+            sh "bash kubesec-scan.sh"
+          }
+        )
       }
-    }       
+    } 
     
     stage('Vulnerability Scan - Docker') {
       steps {
