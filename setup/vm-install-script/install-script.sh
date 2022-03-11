@@ -87,6 +87,6 @@ echo ".........----------------#################._.-.-COMPLETED-.-._.###########
 echo "--------- my stuff ------ "
 source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
 echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
-alias k=kubectl
-complete -F __start_kubectl k
+echo "alias k=kubectl"  >> ~/.bashrc 
+echo "complete -F __start_kubectl k"   >> ~/.bashrc 
 echo "------ finish my stuff -----"
