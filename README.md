@@ -1,5 +1,7 @@
 # kubernetes-devops-security
-
+ ip addr add 10.179.203.153/24 broadcast 10.179.255.255 dev eth0
+ 
+ 
 OPA conftest
 - https://www.conftest.dev/
 - https://github.com/gbrindisi/dockerfile-security
